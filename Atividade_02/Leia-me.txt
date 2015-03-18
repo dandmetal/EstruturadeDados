@@ -1,4 +1,4 @@
-Lista sobre o basico de C
+Lista sobre C nivel medio
 
 Daniel Moura de Oliveira
 paladinozero@hotmail.com	
