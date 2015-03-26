@@ -1,0 +1,1 @@
+Não.Para o programa funcionar o comando deve ser scanf("%d",&px); pois o scanf precisa receber o endereço da variavel

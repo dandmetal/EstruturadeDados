@@ -1,0 +1,5 @@
+int x;
+int *px;
+x=5;
+px=&x;
+printf("%d",*px/5);

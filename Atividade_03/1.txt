@@ -1,0 +1,2 @@
+Ponteiro é um tipo de variavel que armazena endereços de memoria,permitindo o usuario controlar manualmente a alocação de dados
+na memoria do computador.
