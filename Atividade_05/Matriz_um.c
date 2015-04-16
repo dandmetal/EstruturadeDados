@@ -65,7 +65,7 @@ struct matriz{
      }
  void matriz_transposta(Matriz* mat){
       int i,j,k;
-      int trans[j][i];
+      int trans[mat->coluna][mat->linha];
       for (j = 0; j < mat->linha;j++){
          for (i = 0; i < mat->coluna; i++){
              k=i*mat->coluna+j;
