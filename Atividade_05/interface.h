@@ -13,3 +13,7 @@
  int linhas_matriz(Matriz* mat);
  
  int colunas_matriz(Matriz* mat);
+ 
+ void matriz_simetrica(Matriz* mat);
+ 
+ void matriz_transposta(Matriz* mat);

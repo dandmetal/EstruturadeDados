@@ -43,10 +43,12 @@ struct matriz{
  int colunas_matriz(Matriz* mat){
  	return mat->coluna;
  }
- matriz_simetrica(Matriz* mat){
+ void matriz_simetrica(Matriz* mat){
       int k,l,i,j;
       int sime=1;
-      if (mat->linha!=mat->coluna) printf("Matriz nao simetrica\n");
+      if (mat->linha!=mat->coluna) {
+                                   sime=0;
+                                   printf("Matriz nao simetrica\n");}
       else{
           printf("Matriz Quadrada\n"); 
          
@@ -54,14 +56,14 @@ struct matriz{
              for (j=0; (j<mat->coluna)&&(sime==1); j++) {
               k=i*mat->coluna+j;
               l=j*mat->coluna+i;
-               if (mat->dado[k] !=mat->dado[j]) sime=0;
+               if (mat->dado[k] !=mat->dado[l]) sime=0;
                }
                } 
             if (sime==1) printf ("Matriz simetrica\n");
             if (sime==0) printf ("Matriz nao simetrica\n");                                     
             }  
      }
- matriz_transposta(Matriz* mat){
+ void matriz_transposta(Matriz* mat){
       int i,j,k;
       int trans[j][i];
       for (j = 0; j < mat->linha;j++){
@@ -88,5 +90,6 @@ struct matriz{
     matriz_simetrica(m);
     matriz_transposta(m);
     libera_matriz(m);
+  
     
  }
