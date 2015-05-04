@@ -1,0 +1,2 @@
+A função remove o inicio da lista mas ele retorna uma variavel do tipo tDado, sendo assim ele não retorna o valor armazenado
+e sim a estrutura que pode ser usada para ler o valor armazenado no inicio.
