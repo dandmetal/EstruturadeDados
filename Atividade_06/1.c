@@ -46,8 +46,9 @@ float distancia(Ponto* f,Ponto* q){
 main(){
    
   Ponto p;
-  Ponto *f=cria_ponto();
-  Ponto *q=cria_ponto();
+  Ponto k;
+  Ponto *f=&p;
+  Ponto *q=&k;
   captura_0(p);
   imprimi_0(p);  
   captura_1(f);
