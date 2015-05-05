@@ -34,10 +34,15 @@ else printf("lista nao vazia\n");
 
 Lista* busca(Lista* raiz,int x){
 Lista* atual;
-atual=raiz;
-while (atual->dado!=x && atual!=NULL) atual=atual->prox;
-if (atual->dado==x) printf("Elemento encontrado\n");
-else printf("Elemento nao encontrado\n");
+for (atual=raiz;atual!=NULL;atual=atual->prox){
+	if (atual->dado==x)
+	{
+		printf("Elemento encontrado\n");
+		return atual;
+	} 
+}
+return NULL;
+
 }
 
 Lista* remover(Lista* raiz){
