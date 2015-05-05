@@ -1,92 +1,100 @@
 #include<stdlib.h>
 #include<stdio.h>
 
+
 struct lista{
-      int dado; 
-      struct lista *prox; 
-       };
+int dado;
+struct lista *prox;
+};
 typedef struct lista Lista;
- 
- Lista* raiz;
- Lista* galho;
- 
- cria_lista(){ 
-   
-   raiz=NULL;
-  
-   
-      }
-inserir(int x){
-     Lista *atual;
-     atual=(Lista*)malloc(sizeof(Lista));
-     atual->dado=x;
-     atual->prox=raiz;
-     raiz=atual;   
-     }       
 
-
-percorrer(){
-   Lista* atual;
-   for(atual=raiz;atual!=NULL;atual=atual->prox){
-        printf("%d\n",atual->dado);
-        
-    }  
-            
-            }
-lista_vazia(){               
-    if(raiz==NULL) printf("lista vazia\n"); 
-    else printf("lista nao vazia\n");              
-                   
-                   }
-busca(int x){
-     Lista* atual;
-     atual=raiz;
-     while (atual!=NULL && atual->dado!=x) atual=atual->prox;  
-     if (atual->dado==x) printf("Elemento encontrado\n");      
-             }
-remover(){
-     Lista* apaga;
-     apaga=raiz;
-     raiz=apaga->prox;
-     free(apaga);          
-               
-               }
-libera(){
-     free(raiz);
-     raiz=NULL;    
-         
-         }
-int igual(Lista* l1,Lista* l2){
-    int igual;
-    while(l1!=NULL){
-           if (l1->dado==l2->dado){
-           igual=1;
-           l1=l1->prox;
-           l2=l2->prox;            
-           }
-           else {
-                igual=0;
-                break; }           
-                             }
-    return igual;
-    
+Lista* cria_lista(){
+	return NULL;
 }
 
+Lista* inserir(Lista* r,int x){
+	Lista* head;
+	head=(Lista*)malloc(sizeof(Lista));
+	head->dado=x;
+	head->prox=r;
+	return head;	
+}
+
+percorrer(Lista* raiz){
+Lista* atual;
+for(atual=raiz;atual!=NULL;atual=atual->prox){
+printf("%d\n",atual->dado);
+       } 
+}
+
+lista_vazia(Lista* raiz){
+if(raiz==NULL) printf("lista vazia\n");
+else printf("lista nao vazia\n");
+}
+
+Lista* busca(Lista* raiz,int x){
+
+Lista* atual;
+for (atual=raiz;atual!=NULL;atual=atual->prox){
+	if (atual->dado==x)
+	{
+		printf("Elemento encontrado\n");
+		return atual;
+	} 
+}
+return NULL;
+
+}
+
+Lista* remover(Lista* raiz){
+
+Lista* apaga;
+apaga=raiz;
+raiz=apaga->prox;
+free(apaga);
+return raiz;
+
+}
+
+Lista* libera(Lista* raiz){
+free(raiz);
+raiz=NULL;
+return raiz;
+}
+
+ igual(Lista* l,Lista* j){
+	int ig;
+	while(l!=NULL){
+	   if (l->dado=j->dado){
+	   	ig=1;
+	   	l=l->prox;
+	    j=j->prox;
+	   }	
+	else{
+	    ig=0;
+		break;	
+	} 	
+	
+	}
+	if (ig==1) printf("igual\n");
+	else printf("diferente\n");
+}
+
+
 main(){
-  
-  cria_lista();
-  inserir(10);
-  inserir(20);
-  inserir(30);
-  inserir(40);
-  lista_vazia();
-  busca(20);
-  percorrer();
-  galho=raiz;
-  Lista* l1=raiz;
-  Lista* l2=galho;
-  printf("%d\n",igual(l1,l2));
-     
-       
-       
-       }
+	Lista* raiz;
+	Lista* batata;
+	raiz=cria_lista();
+	batata=cria_lista();
+	lista_vazia(raiz);
+   	raiz=inserir(raiz,2);
+   	raiz=inserir(raiz,3);
+   	raiz=inserir(raiz,4);
+   	raiz=inserir(raiz,5);
+    batata=inserir(batata,2);
+    batata=inserir(batata,3);
+    batata=inserir(batata,4);
+    batata=inserir(batata,5);
+   	percorrer(raiz);
+   	igual(raiz,batata);
+}
