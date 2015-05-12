@@ -24,8 +24,8 @@ Lista* inserir(Lista* r,int x){
     novo->dado=x;
     novo->prox=r;
     r=novo;
-    
-       }
+    return novo;
+           }
     else {
      novo->dado=x;
      novo->ant=head;
