@@ -7,13 +7,13 @@ struct lista{
       struct lista *ant;
        };
 typedef struct lista Lista;
-Lista *r;
- cria_lista(){
+
+Lista* cria_lista(){
      
-      r=NULL; 
+      return NULL; 
               
              }
-inserir(int x){
+Lista* inserir(Lista* r,int x){
     Lista* novo;
     Lista* head=r;
     
@@ -31,34 +31,39 @@ inserir(int x){
      novo->ant=head;
      novo->prox=r;
      r=novo;
-     head=r;
-     novo->prox->ant=novo;     
+     head=r; 
+     return novo;   
          }
                     }          
-busca(int x){
+Lista* busca(Lista* raiz,int x){
     Lista* atual;
-    atual=r;
-    while (atual!=NULL && atual->dado!=x) atual=atual->prox;  
-    if (atual->dado==x) printf("Elemento encontrado\n");                     
+for (atual=raiz;atual!=NULL;atual=atual->prox){
+	if (atual->dado==x)
+	{
+		printf("Elemento encontrado\n");
+		return atual;
+	} 
+}
+return NULL;                    
           }
 
-remover(){
+Lista* remover(Lista* r){
  
  r=r->prox;
  free(r->ant);
  r->ant=NULL;
-          
+ return r;        
           
           }
 
 main(){
-    
-    cria_lista();
-    inserir(1);
-    inserir(2);
-    inserir(3);
-    busca(3);
-    remover();
+    Lista* l;
+    l=cria_lista();
+    l=inserir(l,1);
+    l=inserir(l,2);
+    l=inserir(l,3);
+    busca(l,3);
+    l=remover(l);
     
        
        
