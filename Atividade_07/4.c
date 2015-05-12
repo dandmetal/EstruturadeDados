@@ -1,93 +1,65 @@
 #include<stdlib.h>
 #include<stdio.h>
 
+
 struct lista{
-      int dado; 
-      struct lista *prox; 
-       };
+int dado;
+struct lista *prox;
+};
 typedef struct lista Lista;
- 
- Lista* raiz;
- 
- cria_lista(){ 
-   
-   raiz=NULL;
-  
-   
-      }
-inserir(int x){
-     Lista *atual;
-     atual=(Lista*)malloc(sizeof(Lista));
-     atual->dado=x;
-     atual->prox=raiz;
-     raiz=atual;   
-     }       
 
+Lista* cria_lista(){
+	return NULL;
+}
 
-percorrer(){
-   Lista* atual;
-   for(atual=raiz;atual!=NULL;atual=atual->prox){
-        printf("%d\n",atual->dado);
-        
-    }  
-            
-            }
-lista_vazia(){               
-    if(raiz==NULL) printf("lista vazia\n"); 
-    else printf("lista nao vazia\n");              
-                   
-                   }
-busca(int x){
-     Lista* atual;
-     atual=raiz;
-     while (atual!=NULL && atual->dado!=x) atual=atual->prox;  
-     if (atual->dado==x) printf("Elemento encontrado\n");      
-             }
-remover(){
-     Lista* apaga;
-     apaga=raiz;
-     raiz=apaga->prox;
-     free(apaga);          
-               
-               }
-libera(){
-     free(raiz);
-     raiz=NULL;    
-         
-         }
-tornacircular(){
-      Lista* inicio;
-      Lista* fim;
-      inicio=raiz;  
-      printf("Chegoaqui\n");  
-      while(raiz!=NULL) raiz=raiz->prox;
-      printf("Chegoaqui\n");  
-      fim=raiz;
-      printf("Chegoaqui\n");  
-      fim->prox=inicio;
-               
-                }
-int contael(){
-    Lista* atual;
-    int n=0;
-   for(atual=raiz;atual!=NULL;atual=atual->prox){
-           n++;                                                                                      
-                                                 }       
- return n;         
-          
-          }
-main(){
- 
-  cria_lista();
-  inserir(10);
-  inserir(20);
-  inserir(30);
-  inserir(40);
-  lista_vazia();
-  busca(20);
-  percorrer();
-  tornacircular();
-       
-       
+Lista* inserir(Lista* r,int x){
+	Lista* head;
+	head=(Lista*)malloc(sizeof(Lista));
+	head->dado=x;
+	head->prox=r;
+	return head;	
+}
+Lista* tornaCircular(Lista *r){
+    Lista* head;
+    Lista* inicio;
+    Lista* fim;
+    inicio=r;
+    for (head=r;head->prox!= NULL;head=head->prox);
+    fim=head;
+    fim->prox=inicio;
+    return head; 
        
        }
+Lista* tornaLinear(Lista *r){
+    Lista* head;
+    Lista* inicio;
+    Lista* fim;
+    inicio=r;
+    for (head=r;head->prox!= NULL;head=head->prox);
+    fim=head;
+    fim->prox=NULL;
+    return head; 
+    
+       }
+int tamanhoCircular(Lista* r){
+    Lista* atual;
+    int n=0;
+    for(atual=r;atual!=NULL;atual=atual->prox){
+     n++;
+       }              
+           return n;
+                       }
+
+
+main(){
+	Lista* raiz;
+	raiz=cria_lista();
+   	raiz=inserir(raiz,2);
+   	raiz=inserir(raiz,3);
+   	raiz=inserir(raiz,4);
+   	raiz=inserir(raiz,5);
+   	printf("%d",tamanhoCircular(raiz));
+    raiz=tornaCircular(raiz);
+    raiz=tornaLinear(raiz);
+    
+}
