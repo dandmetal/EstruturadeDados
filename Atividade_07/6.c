@@ -5,66 +5,60 @@ struct lista{
       int dado; 
       struct lista *prox; 
       struct lista *ant;
-      struct lista *inicio; 
-      struct lista *fim;
        };
 typedef struct lista Lista;
-Lista *r;
- cria_lista(){
-      r=NULL; 
-            
+
+Lista* cria_lista(){
+     
+      return NULL; 
+              
              }
-inserir(int x){
+Lista* inserir(Lista* r,int x){
     Lista* novo;
     Lista* head=r;
-    
+    Lista* inicio=r;
+    Lista* fim;
     if (r==NULL){
     
     novo=(Lista*)malloc(sizeof(Lista));                
     novo->ant=NULL;
     novo->dado=x;
-    novo->inicio=novo;
-    novo->fim=novo;
+    inicio=novo;
+    fim=inicio;
     novo->prox=r;
     r=novo;
-    
+    return novo;
        }
     else {
      novo->dado=x;
      novo->ant=head;
      novo->prox=r;
      r=novo;
-     novo->fim=novo;
-     head=r;
-     novo->prox->ant=novo;
-     novo->fim->prox=novo->inicio;     
+     fim=novo;
+     head=r; 
+     fim->prox=inicio;
+     inicio->ant=fim;
+     return novo;   
          }
                     }          
-busca(int x){
-    Lista* atual;
-    atual=r;
-    while (atual!=NULL && atual->dado!=x) atual=atual->prox;  
-    if (atual->dado==x) printf("Elemento encontrado\n");                     
-          }
 
-remover(){
+
+Lista* remover(Lista* r){
  
  r=r->prox;
  free(r->ant);
  r->ant=NULL;
-          
+ return r;        
           
           }
 
 main(){
-    
-    cria_lista();
-    inserir(1);
-    inserir(2);
-    inserir(3);
-    busca(3);
-    remover();
-  
+    Lista* l;
+    l=cria_lista();
+    l=inserir(l,1);
+    l=inserir(l,2);
+    l=inserir(l,3);
+    l=remover(l);
     
        
        
