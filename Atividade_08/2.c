@@ -31,7 +31,7 @@ No* removeInicio(No* n)
  return p;
 }
 
-push(Pilha*p, float f)
+push(Pilha* p, float f)
 {
 	p->prim = insereInicio(p->prim,f);
 }
@@ -68,17 +68,18 @@ liberaPilha(Pilha* p)
 imprime(Pilha* p)
 {
 	No* n;
-	for (n=p->prim; n!=NULL; n=n->prox)
-	printf("%f\n",n->info);
+	for (n=p->prim; n!=NULL; n=n->prox)	printf("%f\n",n->info);
 }
 
 main(){
   Pilha* p=cria();
-  p=push(p,1);
-  p=push(p,2);
-  p=push(p,3);
+  No* n;
+  n=push(p,1);
+  n=push(p,2);
+  n=push(p,3);
   imprime(p);
   pop(p);
   pop(p);
+  imprime(p);
 
 }
