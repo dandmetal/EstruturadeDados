@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include "pilha.h"
+struct no{
+          float info;
+          struct no* prox;
+};
+
+struct pilha {
+          No* prim;
+};
+
+Pilha* cria(){
+  No* n=NULL;
+  Pilha* p=(Pilha*)malloc(sizeof(Pilha));
+  p->prim = NULL;
+  return p;
+  }
+
+No* insereInicio(No* n, float f)
+{
+	No* head = (No*)malloc(sizeof(No));
+		head->info = f;
+		head->prox = n;
+		return head;
+}
+
+No* removeInicio(No* n)
+{
+	if(n == NULL)			printf("Lista vazia");
+			No* head = n->prox;
+			free(n);
+			return head;
+}
+
+
+
+
