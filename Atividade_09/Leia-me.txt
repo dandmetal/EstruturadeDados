@@ -1,0 +1,5 @@
+Atividade sobre utilizar pilha para fazer uma calculadora 
+
+Daniel Moura de Oliveira
+paladinozero@hotmail.com	
+Estrutura de Dados 1-T01
