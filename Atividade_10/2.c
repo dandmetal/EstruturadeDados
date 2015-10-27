@@ -22,14 +22,20 @@ Fila* cria(){
 }
 
 void queue(Fila* f,float v){
-	f->fim->info=v;
-    f->fim=f->fim->prox;
+        No* help=(No*)malloc(sizeof(No*));
+	help->info=v;
+	help->prox=NULL;
+	if (f->ini==NULL){
+		f->ini=f->fim=help;
+		return;
+	} 
+	f->fim->prox=help;
 	}
 
 float dequeue(Fila* f){
-	No* p;
-	int v;
-	v=f->ini->info;
+    No* p;
+    int v;
+    v=f->ini->info;
     p=f->ini;
     f->ini=f->ini->prox;
     free(p);
